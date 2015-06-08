@@ -1,3 +1,7 @@
+** 这是我的博客 **
+
+使用的是 jekyll-materiallize 模板
+
 # jekyll-materiallize
 A jekyll blog theme based on materiallize
 
