@@ -8,9 +8,10 @@ shortContent: "记录一些在underscore库中，受到启发的一些代码"
 ---
 {% include JB/setup %}
 
-###1. 针对于宿主环境
+#### 一、 针对于宿主环境
 
-{% highlight bash linenos %}
+<!--linenos 显示行号-->
+{% highlight javascript %}
 //node环境
 if (typeof exports !== 'undefined') {
   if (typeof module !== 'undefined' && module.exports) {
@@ -38,18 +39,36 @@ if (typeof define !== 'undefined' && define.cmd) {
 }
 {% endhighlight %}
 
-最近spm社区也是极力推荐使用commonjs的语法风格，去cmd的语法风格，以保证代码不用改来改去。
+*最近spm社区也是极力推荐使用commonjs的语法风格，去cmd的语法风格，以保证代码不用改来改去。*
 
 ---
-###2. 一些灵活的代码
+#### 二、 一些灵活的代码
+
+##### 1. + 的用法
+
 {% highlight javascript %}
 //判断obj是 数组 还是 对象
 if (obj.length === +obj.length) {
   //......
 }
 {% endhighlight %}
-因为对象的length是`undefined`，而 `+obj.length` 的作用跟 `Number(obj.length)` 是一样的，
+因为对象的length是*undefined*，而 *+obj.length* 的作用跟 *Number(obj.length)* 是一样的，
 得出的结果是NaN。 `+` 的用法，我在 *Arale* 库里面也看到了，可能是写起来方便和cool，所以在库中用的比较多。
+
+
+##### 2. void 的用法
+```javascript
+void 0; //undefined
+void new Date(); //undefined
+```
+`void` 是修饰符， 总是返回undefined. 例如
+
+{% highlight javascript %}
+<a href="javascript:void(0);"></a>
+{% endhighlight %}
+
+由于返回undefined，所以*a标签*默认事件被取消了。
+
 
 
 
