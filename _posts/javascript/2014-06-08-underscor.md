@@ -1,7 +1,7 @@
 ---
 layout: post
 title: underscore 源码看点
-date: 2014-06-08 22:58:51
+date: 2014-06-08
 categories: javascript
 tags: [js, underscore, backbone]
 shortContent: "记录一些在underscore库中，受到启发的一些代码"
