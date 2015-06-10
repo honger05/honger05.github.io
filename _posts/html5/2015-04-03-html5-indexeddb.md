@@ -32,7 +32,22 @@ shortContent: ""
 [indexeddb]: /assets/images/indexeddb.png
 
 
-#### 二、使用 jquery-indexedDB 插件
+---    
+#### 二、项目中使用情况
+
+创建一个单例缓存管理类
+
+```javascript
+requrie('indexeddb')($);
+
+var CacheManager = function() {
+	
+}
+```
+
+
+---    
+#### 三、使用 jquery-indexedDB 插件
 
 详细介绍 -- [jquery-indexedDB](https://github.com/axemclion/jquery-indexeddb/blob/master/docs/README.md)
 
@@ -86,7 +101,7 @@ dbOpenPromise.fail(function(error, event){
     this; // Context inside the function is the native IDBRequest   
 });
 ```
-
+  
 ##### 2. 打开一个事务（Transactions）
 
 在数据库存在的情况下，不需要先打开数据库链接，直接使用下面的方法打开事务即可。
@@ -234,3 +249,10 @@ deletePromise.progress(function(db, event){
 - [IndexedDB API playground and examples](http://nparashuram.com/IndexedDB/)
 - [IndexedDB W3C Specification](http://www.w3.org/TR/IndexedDB/)
 - [My work on IndexedDB](http://blog.nparashuram.com/search/label/indexeddb)
+
+
+
+
+
+
+
