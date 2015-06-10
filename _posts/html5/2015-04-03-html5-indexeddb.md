@@ -3,14 +3,16 @@ layout: post
 title: html5 之 IndexedDB 篇
 date: 2015-04-03
 categories: html5
-tags: [html5, indexeddb, project]
+tags: [html5, indexeddb, project, js]
 shortContent: ""
 ---
 {% include JB/setup %}
 
-#### 一、IndexedDB 概述
+### 一、IndexedDB 概述
+---
 
 ##### 1. 浏览器端数据存储方案
+
 
 - cookie 小于4kb，且每次请求都会发送给服务器端。
 - window.name 内容少，操作不方便，不安全
@@ -32,9 +34,11 @@ shortContent: ""
 [indexeddb]: /assets/images/indexeddb.png
 
 
----    
-#### 二、项目中使用情况
- 
+
+### 二、项目中使用情况
+---
+
+
 将基础数据存储在浏览器中，数据较稳定，不常更新。主键是 表名 bb
 
 创建一个单例缓存管理类
@@ -43,7 +47,7 @@ shortContent: ""
 requrie('indexeddb')($);
 
 function CacheManager() {
-	
+
 	//数据库存在的话就打开连接，不存在的话就创建数据库
 	this.dbPromies = $.indexedDB(dbname, {
 		'schema': {
@@ -51,8 +55,8 @@ function CacheManager() {
 				transaction.createObjectStore('cachebb', {'keyPath': 'bb'});
 			}
 		}
-	})	
-	
+	})
+
 }
 
 CacheManager.prototype = {
@@ -91,19 +95,21 @@ CacheManager.prototype = {
 
 	deleteDB: function(dbname, callback){
 			$.indexedDB(dbname).deleteDatabase().done(function() {
-				isFunction(callback) || callback.call(); 
+				isFunction(callback) || callback.call();
 			})
 	},
 
-	
+
 }
 
 return new CacheManager();
 ```
 
 
----    
-#### 三、使用 jquery-indexedDB 插件
+
+### 三、使用 jquery-indexedDB 插件
+---
+
 
 详细介绍 -- [jquery-indexedDB](https://github.com/axemclion/jquery-indexeddb/blob/master/docs/README.md)
 
@@ -154,10 +160,10 @@ dbOpenPromise.progress(function(db, event) {
 dbOpenPromise.fail(function(error, event){
     error; // 错误对象
     event; // IndexdbDB Event 对象
-    this; // Context inside the function is the native IDBRequest   
+    this; // Context inside the function is the native IDBRequest
 });
 ```
-  
+
 ##### 2. 打开一个事务（Transactions）
 
 在数据库存在的情况下，不需要先打开数据库链接，直接使用下面的方法打开事务即可。
@@ -177,10 +183,10 @@ transactionPromise.progress(function(trans){
 	var objectStore = trans.createObjectStore("objectStoreName", {
     "autoIncrement" : true,  // 默认是true，主键自增长
     "keyPath" : id // 对象的主键
-	}); 
+	});
 
 	//删除一个 ObjectStore
-	trans.deleteObjectStore(objectStoreName); 
+	trans.deleteObjectStore(objectStoreName);
 
 });
 
@@ -207,8 +213,8 @@ var objectStore = $.indexedDB("database_name").objectStore("objectStoreName", /*
 
 //CURD 操作
 var promise = objectStore.add(/*Javascript Object*/ value, /*Optional*/ key); // Adds data to the objectStore
-var promise = objectStore.get(key); Gets the object with the key 
-var promise = objectStore.put(/*Javascript Object*/ value, key); // Updates the object for the specified key 
+var promise = objectStore.get(key); Gets the object with the key
+var promise = objectStore.put(/*Javascript Object*/ value, key); // Updates the object for the specified key
 var promise = objectStore.delete(key); // Deletes the object with the specified key
 var promise = objectStore.count(); // Gets all the objects
 var promise = objectStore.clear(); // Removes all data from the object store;
@@ -231,7 +237,7 @@ var iterationPromise = objectStore.each(function(item){
     item.delete(); // Deletes the current item
     item.update(newItem); // Updates the current item with newItem;
 
-    return; 
+    return;
     // false - do not continue iteration
     // integer 'n' - n can be 1,2,... indicating skip next n objects and continue
     // object - continue to item with object as the next key
@@ -260,7 +266,7 @@ var index = objectStore.index("indexName");
 index.each(function(item){
     // Iterate over objects in index
     // Similar to iterating over objects in an ObjectStore
-    item; // same as iterating over objects (see above) 
+    item; // same as iterating over objects (see above)
 }, /*Optional*/ range, /*Optional */ direction);
 
 index.eachKey(function(item){
@@ -285,18 +291,18 @@ objectStore.deleteIndex("indexName"); //returns nothing
 ```javascript
 var deletePromise = $.indexedDB("database_name").deleteDatabase();
 
-deletePromise.done(function(null, event){ 
+deletePromise.done(function(null, event){
     /* Called when the delete is successful*/
     event; // The success event
 });
-deletePromise.fail(function(error, event){ 
+deletePromise.fail(function(error, event){
     /* Called when the delete is successful*/
     error; // Reason for the error
 });
-deletePromise.progress(function(db, event){ 
+deletePromise.progress(function(db, event){
     // Called when the deleting is blocked due to another transaction
     db; // Database that is opened
-    event.type // Indicates it is blocked, etc. 
+    event.type // Indicates it is blocked, etc.
 });
 ```
 
