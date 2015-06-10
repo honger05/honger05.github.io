@@ -34,15 +34,71 @@ shortContent: ""
 
 ---    
 #### 二、项目中使用情况
+ 
+将基础数据存储在浏览器中，数据较稳定，不常更新。主键是 表名 bb
 
 创建一个单例缓存管理类
 
 ```javascript
 requrie('indexeddb')($);
 
-var CacheManager = function() {
+function CacheManager() {
+	
+	//数据库存在的话就打开连接，不存在的话就创建数据库
+	this.dbPromies = $.indexedDB(dbname, {
+		'schema': {
+			'2': function(transaction) {
+				transaction.createObjectStore('cachebb', {'keyPath': 'bb'});
+			}
+		}
+	})	
 	
 }
+
+CacheManager.prototype = {
+
+	refresh: function() {
+
+		//拿到 objectStore 对象
+		var cachebbStore = this.dbPromies.objectStore('cachebb');
+
+		//清除所有数据  -- 异步的方法
+		var storePromies = cachebbStore.clear();
+
+		//清除成功
+		storePromies.done(function() {
+			//更新数据 -- keyPath一样时
+			cachebbStore.put(data);
+			//添加数据
+			cachebbStore.add(data)
+		});
+	},
+
+	//根据主键查询
+	query: function(bb) {
+		return $.Deferred(function(dfd) {
+			//拿到 objectStore 对象
+			var cachebbStore = this.dbPromies.objectStore('cachebb');
+
+			cachebbStore.get(bb).done(function(result, event) {
+				dfd.resolve(result.records);
+			}).fail(function(error, event) {
+				dfd.reject(error);
+		  })
+
+		})
+	},
+
+	deleteDB: function(dbname, callback){
+			$.indexedDB(dbname).deleteDatabase().done(function() {
+				isFunction(callback) || callback.call(); 
+			})
+	},
+
+	
+}
+
+return new CacheManager();
 ```
 
 
