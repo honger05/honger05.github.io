@@ -221,6 +221,7 @@ if (req.readyState === 4 ) {
     }
 }
 ````
+
 2. Canvas
 
 网页Canvas元素输出的二进制像素数据，就是类型化数组。
@@ -232,27 +233,20 @@ var ctx = canvas.getContext('2d');
 var imageData = ctx.getImageData(0,0, 200, 100);
 var typedArray = imageData.data;
 ````
-需要注意的是，上面代码的typedArray虽然是一个类型化数组，但是它的视图类型是一种针对Canvas元素的专有类型Uint8ClampedArray。这个视图类型的特点，就是专门针对颜色，把每个字节解读为无符号的8位整数，即只能取值0～255，而且发生运算的时候自动过滤高位溢出。这为图像处理带来了巨大的方便。
 
-举例来说，如果把像素的颜色值设为Uint8Array类型，那么乘以一个gamma值的时候，就必须这样计算：
-
-u8[i] = Math.min(255, Math.max(0, u8[i] * gamma));
-因为Uint8Array类型对于大于255的运算结果（比如0xFF+1），会自动变为0x00，所以图像处理必须要像上面这样算。这样做很麻烦，而且影响性能。如果将颜色值设为Uint8ClampedArray类型，计算就简化许多。
-
-pixels[i] *= gamma;
-Uint8ClampedArray类型确保将小于0的值设为0，将大于255的值设为255。注意，IE 10不支持该类型。
 
 3. File
 
 如果知道一个文件的二进制数据类型，也可以将这个文件读取为类型化数组。
 
+````javascript
 reader.readAsArrayBuffer(file);
-下面以处理bmp文件为例。假定file变量是一个指向bmp文件的文件对象，首先读取文件。
+//下面以处理bmp文件为例。假定file变量是一个指向bmp文件的文件对象，首先读取文件。
 
 var reader = new FileReader();
 reader.addEventListener("load", processimage, false); 
 reader.readAsArrayBuffer(file);
-然后，定义处理图像的回调函数：先在二进制数据之上建立一个DataView视图，再建立一个bitmap对象，用于存放处理后的数据，最后将图像展示在canvas元素之中。
+//然后，定义处理图像的回调函数：先在二进制数据之上建立一个DataView视图，再建立一个bitmap对象，用于存放处理后的数据，最后将图像展示在canvas元素之中。
 
 function processimage(e) { 
  var buffer = e.target.result; 
@@ -260,30 +254,7 @@ function processimage(e) {
  var bitmap = {};
  // 具体的处理步骤
 }
+````
+
 具体处理图像数据时，先处理bmp的文件头。具体每个文件头的格式和定义，请参阅有关资料。
 
-bitmap.fileheader = {}; 
-bitmap.fileheader.bfType = datav.getUint16(0, true); 
-bitmap.fileheader.bfSize = datav.getUint32(2, true); 
-bitmap.fileheader.bfReserved1 = datav.getUint16(6, true); 
-bitmap.fileheader.bfReserved2 = datav.getUint16(8, true); 
-bitmap.fileheader.bfOffBits = datav.getUint32(10, true);
-接着处理图像元信息部分。
-
-bitmap.infoheader = {};
-bitmap.infoheader.biSize = datav.getUint32(14, true);
-bitmap.infoheader.biWidth = datav.getUint32(18, true); 
-bitmap.infoheader.biHeight = datav.getUint32(22, true); 
-bitmap.infoheader.biPlanes = datav.getUint16(26, true); 
-bitmap.infoheader.biBitCount = datav.getUint16(28, true); 
-bitmap.infoheader.biCompression = datav.getUint32(30, true); 
-bitmap.infoheader.biSizeImage = datav.getUint32(34, true); 
-bitmap.infoheader.biXPelsPerMeter = datav.getUint32(38, true); 
-bitmap.infoheader.biYPelsPerMeter = datav.getUint32(42, true); 
-bitmap.infoheader.biClrUsed = datav.getUint32(46, true); 
-bitmap.infoheader.biClrImportant = datav.getUint32(50, true);
-最后处理图像本身的像素信息。
-
-var start = bitmap.fileheader.bfOffBits;
-bitmap.pixels = new Uint8Array(buffer, start);
-至此，图像文件的数据全部处理完成。下一步，可以根据需要，进行图像变形，或者转换格式，或者展示在Canvas网页元素之中。
