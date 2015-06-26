@@ -209,7 +209,7 @@ xhr.responseType = 'arraybuffer';
 
 如果知道传回来的是32位整数，可以像下面这样处理。
 
-````javaascript
+````javascript
 xhr.onreadystatechange = function () {
 if (req.readyState === 4 ) {
     var arrayResponse = xhr.response;
@@ -244,13 +244,13 @@ reader.readAsArrayBuffer(file);
 //下面以处理bmp文件为例。假定file变量是一个指向bmp文件的文件对象，首先读取文件。
 
 var reader = new FileReader();
-reader.addEventListener("load", processimage, false); 
+reader.addEventListener("load", processimage, false);
 reader.readAsArrayBuffer(file);
 //然后，定义处理图像的回调函数：先在二进制数据之上建立一个DataView视图，再建立一个bitmap对象，用于存放处理后的数据，最后将图像展示在canvas元素之中。
 
-function processimage(e) { 
- var buffer = e.target.result; 
- var datav = new DataView(buffer); 
+function processimage(e) {
+ var buffer = e.target.result;
+ var datav = new DataView(buffer);
  var bitmap = {};
  // 具体的处理步骤
 }
