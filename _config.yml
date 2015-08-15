@@ -1,23 +1,25 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:year/:month/:day/:title
+permalink: /:categories/:year/:month/:day/:title
 markdown: rdiscount
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: pygments
-#mardown: redcarpet
+mardown: redcarpet
 
 safe: false
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
 title : honger05
-tagline: 喜欢折腾前端各种技术
+tagline: common on!
 author :
   name : 郑凯
+  avatar: false
+  introduction: 运动达人，篮球高手，游泳健将。看过许多技术类书籍，喜欢折腾前端各种技术
   email : honger05@126.com
   github : honger05
-  twitter : username
-  feedburner : feedname
+  # twitter : username
+  # feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
@@ -56,7 +58,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : /blog
+  BASE_PATH : false
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
