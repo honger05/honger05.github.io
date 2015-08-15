@@ -8,6 +8,8 @@ shortContent: "为了提高代码的可读性、可维护行，约定一些开�
 ---
 {% include JB/setup %}
 
+# javascript 代码规范
+----
 
 ### javascript 代码规范
 
@@ -23,6 +25,8 @@ shortContent: "为了提高代码的可读性、可维护行，约定一些开�
 * 操作符直接要空格
 * 标点符号之后必须接一个空格
 * 不允许一行判断，一律换行
+
+<!--break-->
 
 ```javascript
 

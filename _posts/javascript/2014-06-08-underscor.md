@@ -8,6 +8,9 @@ shortContent: "记录一些在underscore库中，受到启发的一些代码"
 ---
 {% include JB/setup %}
 
+# underscore 源码看点
+---
+
 #### 一、 针对于宿主环境
 
 <!--linenos 显示行号-->

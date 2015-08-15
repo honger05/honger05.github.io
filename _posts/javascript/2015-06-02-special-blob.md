@@ -8,6 +8,9 @@ shortContent: ""
 ---
 {% include JB/setup %}
 
+# 文件类型之 Blob 对象
+---
+
 #### Blob
 
 ---
@@ -22,6 +25,8 @@ shortContent: ""
 1. 调用Blob构造函数.
 2. 使用一个已有Blob对象上的slice()方法切出另一个Blob对象.
 3. 调用canvas对象上的toBlob方法.
+
+<!--break-->
 
 *注: 需要注意的是,一些浏览器上的slice()方法仍带有前缀:Firefox 12之前的版本上为blob.mozSlice(),Safari上为blob.webkitSlice().*
 

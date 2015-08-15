@@ -8,6 +8,9 @@ shortContent: ""
 ---
 {% include JB/setup %}
 
+# html5 之 IndexedDB 篇
+---
+
 ### 一、IndexedDB 概述
 ---
 
@@ -33,7 +36,7 @@ shortContent: ""
 
 [indexeddb]: /assets/images/indexeddb.png
 
-
+<!--break-->
 
 ### 二、项目中使用情况
 ---

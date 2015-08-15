@@ -1,9 +1,5 @@
-**这是我的博客**
+#jekylll blog
 
-使用的是 jekyll-materiallize 模板
-
-# jekyll-materiallize
-A jekyll blog theme based on materiallize
-
-
-Check the documentation of usage here: [Introduction](http://leftstick.github.io/jekyll-materiallize/tutorial/2015/04/10/theme-introduction/)
+* 基于jekyll的blog
+* 使用了bootstrap框架
+* 使用font-awesome进行修饰

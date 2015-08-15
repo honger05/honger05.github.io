@@ -8,6 +8,9 @@ shortContent: ""
 ---
 {% include JB/setup %}
 
+# XMLHttpRequest level2 之 FormData
+---
+
 #### FormData
 
 ---
@@ -23,7 +26,7 @@ var formdata = new FormData();
 formData.append('file', $('input[name=file]', this).get(0).files[0]);
 formData.append('startX', $('#startX').val());
 
-// 2、将 form 元素对象作参数 
+// 2、将 form 元素对象作参数
 var formobj =  document.getElementById("form");
 var formdata = new FormData(formobj);
 
@@ -31,6 +34,8 @@ var formdata = new FormData(formobj);
 var formobj =  document.getElementById("form");
 var formdata = formobj.getFormData()
 ````
+
+<!--break-->
 
 * 利用 FormData 、ajax 上传文件
 

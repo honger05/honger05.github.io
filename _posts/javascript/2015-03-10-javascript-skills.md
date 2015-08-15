@@ -8,8 +8,7 @@ shortContent: ""
 ---
 {% include JB/setup %}
 
-#### JavaScript 常用技巧
-
+# JavaScript 常用技巧
 ----
 
 * 双感叹号 !!
@@ -23,7 +22,7 @@ var test = !!o.flag // false   等同于 var test = o.flag || false
 //结论是：o.flag 取值为 null，undefined，0 等值时，返回结果为 false。
 ````
 
-* 感叹号，+， function  ： 
+* 感叹号，+， function  ：
 * 核心是，函数声明不能和函数调用混合在一起使用（会语法报错），
 * 运算符 + function(){}() 的写法目的是将 函数声明变为一个表达式。
 * 主要考虑的是性能问题
@@ -36,6 +35,8 @@ var test = !!o.flag // false   等同于 var test = o.flag || false
 (function() {alert1} ()) // undefined
 ````
 
+<!--break-->
+
 * 银行卡 4 位 空格
 
 ````javascript
@@ -43,7 +44,7 @@ var test = !!o.flag // false   等同于 var test = o.flag || false
     document.getElementById('bankCard').onkeyup = function (event) {
         var v = this.value;
         //当匹配到 5 个非空字符时。
-        if(/\S{5}/.test(v)){ 
+        if(/\S{5}/.test(v)){
         		//先把空格去掉，然后再每4个任意符后面加一个空格
             this.value = v.replace(/\s/g, '').replace(/(.{4})/g, "$1 ");
         }
@@ -56,7 +57,7 @@ var test = !!o.flag // false   等同于 var test = o.flag || false
 ````javascript
 var arrObj = Object.getOwnPropertyNames(Function.prototype);//Array.prototype
 for (var funcKey in arrObj) {
-	console.log(arrObj[funcKey]) 
+	console.log(arrObj[funcKey])
 }
 
 //Object.prototype
@@ -101,7 +102,7 @@ a.constructor; // function A(name) {this.name = name} 指向 A 本身  既：a.c
 
 a.constructor.prototype; // {say: function(){alert(this.name)}}  既：a.constructor.prototype === A.prototype === a.__proto__
 
-a.__proto__ === A.prototype // 在ff、chorme中 a.__proto__ === a.constructor.prototype 
+a.__proto__ === A.prototype // 在ff、chorme中 a.__proto__ === a.constructor.prototype
 
 a.__proto__.__proto__ === Object.prototype   // 原型链循环的最终结果是 Object.prototype . 因为所有对象都继承了Object
 
@@ -136,7 +137,7 @@ function previewImage(file) {
 		div.innerHTML = '<div id=divhead style="'+sFilter+src+'\"></div>';
 	}
 }
-```` 
+````
 
 * 图片预加载
 * 思路：先加载一张缩略图，再加载高清图
@@ -160,7 +161,7 @@ function autoImageSize(){
 	var imageArr=document.getElementById("welcome");
 	var maxWidth = $(window).width(),maxHeight = $(window).height();
 	var offsetWidth = 1800,offsetHeight = 1000;
-  var imageRate = offsetWidth / offsetHeight; 
+  var imageRate = offsetWidth / offsetHeight;
   if(offsetWidth > maxWidth){
   	var h = (maxWidth / imageRate);
     imageArr.style.width=maxWidth + "px";

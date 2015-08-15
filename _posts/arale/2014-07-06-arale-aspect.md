@@ -7,5 +7,9 @@ tags: [js, arale]
 shortContent: "aspect 面向切面"
 ---
 {% include JB/setup %}
+# arale 之 aspect 篇
+---
 
 #### arale 介绍：
+
+<!--break-->

@@ -8,13 +8,16 @@ shortContent: ""
 ---
 {% include JB/setup %}
 
+# gulp 常用工具包
+----
+
 #### 常用包
 
 ---
 
 > 总结，若是 seajs 项目，最好是用 spm 来构建。但也并不完美，所以想要完美构建，就放弃 seajs 吧！
 
-##### 1. gulp-seajs-transport 
+##### 1. gulp-seajs-transport
 
 ---
 
@@ -36,6 +39,8 @@ gulp.task("default",function() {
         .pipe(transport()) //此时seajs模块id为=>def/ggg
         .pipe(gulp.dest("./dist"));
 ````
+
+<!--break-->
 
 ##### 2. 遍历目录
 
@@ -67,7 +72,7 @@ gulp.task('default', function() {
             .pipe(transport())
             .pipe(concat(folder+'.js'))
             .pipe(gulp.dest(dest));
-            
+
     });
 });
 ````
@@ -81,9 +86,9 @@ var mergeStream = require('merge-stream');
 
 var stream1 = new Stream();
 var stream2 = new Stream();
- 
+
 var merged = mergeStream(stream1, stream2);
- 
+
 var stream3 = new Stream();
 merged.add(stream3)
 ````
@@ -92,7 +97,7 @@ merged.add(stream3)
 
 ````javascript
 var del = require('del');
- 
+
 del(['tmp/*.js', '!tmp/unicorn.js'], function (err, paths) {
     console.log('Deleted files/folders:\n', paths.join('\n'));
 });
@@ -113,11 +118,11 @@ del(['tmp/*.js', '!tmp/unicorn.js'], function (err, paths) {
 ````javascript
 var gulp = require('gulp'),
     less = require('gulp-less');
- 
+
 gulp.task('testLess', function () {
     gulp.src(['src/less/index.less','src/less/detail.less']) //多个文件以数组形式传入
         .pipe(less())
-        .pipe(gulp.dest('src/css')); //将会在src/css下生成index.css以及detail.css 
+        .pipe(gulp.dest('src/css')); //将会在src/css下生成index.css以及detail.css
 });
 ````
 
@@ -128,7 +133,7 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
      //确保本地已安装gulp-minify-css [npm install gulp-minfy-css --save-dev]
     cssmin = require('gulp-minify-css');
- 
+
 gulp.task('testLess', function () {
     gulp.src('src/less/index.less')
         .pipe(less())
@@ -144,13 +149,13 @@ gulp.task('testLess', function () {
 ````javascript
 var gulp = require('gulp'),
     less = require('gulp-less');
- 
+
 gulp.task('testLess', function () {
     gulp.src(['src/less/*.less','!src/less/extend/{reset,test}.less'])
         .pipe(less())
         .pipe(gulp.dest('src/css'));
 });
- 
+
 gulp.task('testWatch', function () {
     gulp.watch('src/**/*.less', ['testLess']); //当所有less文件发生改变时，调用testLess任务
 });
@@ -164,7 +169,7 @@ var gulp = require('gulp'),
     //当发生异常时提示错误 确保本地安装gulp-notify和gulp-plumber
     notify = require('gulp-notify'),
     plumber = require('gulp-plumber');
- 
+
 gulp.task('testLess', function () {
     gulp.src('src/less/*.less')
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
@@ -183,7 +188,7 @@ gulp.task('testWatch', function () {
 ````javascript
 var gulp = require('gulp'),
     cssmin = require('gulp-minify-css');
- 
+
 gulp.task('testCssmin', function () {
     gulp.src('src/css/*.css')
         .pipe(cssmin({
@@ -203,8 +208,8 @@ gulp.task('testCssmin', function () {
 var gulp = require('gulp'),
     cssmin = require('gulp-minify-css');
     //确保已本地安装gulp-make-css-url-version [npm install gulp-make-css-url-version --save-dev]
-    cssver = require('gulp-make-css-url-version'); 
- 
+    cssver = require('gulp-make-css-url-version');
+
 gulp.task('testCssmin', function () {
     gulp.src('src/css/*.css')
         .pipe(cssver()) //给css文件里引用文件加版本号（文件MD5）
@@ -238,7 +243,7 @@ gulp.task('testCssmin', function () {
 ````javascript
 var gulp = require('gulp'),
     rev = require('gulp-rev-append');
- 
+
 gulp.task('testRev', function () {
     gulp.src('src/html/index.html')
         .pipe(rev())
@@ -251,7 +256,7 @@ gulp.task('testRev', function () {
 ````javascript
 var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin');
- 
+
 gulp.task('testHtmlmin', function () {
     var options = {
         removeComments: true,//清除HTML注释
