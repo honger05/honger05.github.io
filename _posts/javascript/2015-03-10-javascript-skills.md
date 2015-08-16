@@ -14,12 +14,14 @@ shortContent: ""
 * 双感叹号 !!
 
 ````javascript
+
 !null(or undefined) //true
 !!null(or undefined) //false
 
 var o = {};
 var test = !!o.flag // false   等同于 var test = o.flag || false
 //结论是：o.flag 取值为 null，undefined，0 等值时，返回结果为 false。
+
 ````
 
 * 感叹号，+， function  ：

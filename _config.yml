@@ -1,20 +1,21 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title
+permalink: /:categories/:year-:month-:day-:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-
 highlighter: pygments
-
-# pygments: true
+markdown: redcarpet
 
 # mardown: redcarpet
-
 # redcarpet:
-#   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+#   extensions: ["fenced_code_blocks"]
 
+# markdown: rdiscount
 
-markdown: rdiscount
+# default
+# markdown: maruku
+
+# markdown: kramdown
 
 # safe: false
 # Themes are encouraged to use these universal variables
