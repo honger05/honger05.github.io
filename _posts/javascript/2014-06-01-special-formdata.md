@@ -1,7 +1,7 @@
 ---
 layout: post
 title: XMLHttpRequest level2 之 FormData
-date: 2015-06-01
+date: 2014-06-01
 categories: javascript
 tags: [js, skills]
 shortContent: ""

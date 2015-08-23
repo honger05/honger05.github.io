@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  文件类型之 Blob 对象
-date: 2015-06-02
+date: 2014-06-02
 categories: javascript
 tags: [js, skills]
 shortContent: ""
