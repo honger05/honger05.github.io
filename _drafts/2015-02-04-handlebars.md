@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: post
 title: gallery 之 handlebars
 date: 2015-02-04
@@ -10,6 +10,6 @@ shortContent: "handlebars强大的js模板引擎"
 # gallery 之 handlebars
 ---
 
-#### handlebars 介绍：
+#### handlebars 介绍： -->
 
 <!--break-->

@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: post
 title: arale 之 aspect 篇
 date: 2014-07-06 11:31:21
@@ -10,6 +10,6 @@ shortContent: "aspect 面向切面"
 # arale 之 aspect 篇
 ---
 
-#### arale 介绍：
+#### arale 介绍： -->
 
 <!--break-->

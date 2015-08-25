@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: post
 title: arale 之 attribute 篇
 date: 2014-07-06
@@ -10,6 +10,6 @@ shortContent: "提供了set、get等方法"
 # arale 之 attribute 篇
 ---
 
-#### arale 介绍：
+#### arale 介绍： -->
 
 <!--break-->
