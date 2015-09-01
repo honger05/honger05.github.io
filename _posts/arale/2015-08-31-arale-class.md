@@ -183,6 +183,8 @@ Class.Mutators = {
 
 再来看看 `implement` 方法, 它是用来混入属性的。
 
+三个变种属性将被执行
+
 ````js
 function implement(properties) {
   var key, value;
@@ -235,6 +237,7 @@ Class.create = function(parent, properties) {
 ````js
 Class.extend = function(properties) {
   properties || (properties = {});
+  // 指定父类为调用者
   properties.Extends = this;
   return Class.create(properties);
 }
