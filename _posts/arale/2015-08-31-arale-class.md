@@ -134,6 +134,8 @@ function classify(cls) {
 
 这种写法是，当不使用 `new` 关键字调用时，将参数 `类化`，如：
 
+> 修改：是不支持 `new` 的方式调用。
+
 ````js
 function Animal() {}
 Animal.prototype.talk = function() {}
