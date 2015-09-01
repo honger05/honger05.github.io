@@ -1,4 +1,4 @@
- ---
+---
 layout: post
 title: arale 之 events 篇
 date: 2015-08-26
@@ -6,6 +6,7 @@ categories: arale
 tags: [js, arale]
 ---
 {% include JB/setup %}
+
 # arale 之 events 篇
 ---
 
