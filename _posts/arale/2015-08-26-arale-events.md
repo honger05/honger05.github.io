@@ -1,7 +1,7 @@
  ---
 layout: post
 title: arale 之 events 篇
-date: 2015-08-20
+date: 2015-08-26
 categories: arale
 tags: [js, arale]
 ---
