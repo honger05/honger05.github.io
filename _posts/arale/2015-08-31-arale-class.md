@@ -132,14 +132,143 @@ function classify(cls) {
 }
 ````
 
-这种写法是，当不使用 `new` 关键字调用时，将参数类化，如：
+这种写法是，当不使用 `new` 关键字调用时，将参数 `类化`，如：
 
 ````js
 function Animal() {}
+Animal.prototype.talk = function() {}
 
-Class(Animal);// Animal 拥有了 extend 和 implement 方法
+//Class(Animal); Animal 拥有了 extend 和 implement 方法
+var Dog = Class(Animal).extend({
+  swim: function() {}
+})
 ````
 
+Class 的几个变种属性 `Extends` `Implements` `Statics`
 
+````js
+Class.Mutators = {
+  // 继承的方法，只支持单继承
+  Extends: function(parent) {
+    var existed = this.prototype;
+    // 建立原型链来实现继承
+    var proto = createProto(parent.prototype);
+    mix(proto, existed);
+    // 强制改变构造函数
+    proto.constructor = this;
+    this.prototype = proto;
+    // 提供 superclass 语法糖，来调用父类属性
+    this.superclass = parent.prototype;
+  },
+  // 混入属性，可以混入多个类的属性
+  Implements: function(items) {
+    // 将参数变成数组
+    isArray(items) || (items = [ items ]);
+    var proto = this.prototype, item;
+    while (item = items.shift()) {
+      // 无论参数是 类（Function），还是 对象（Object），都混入。
+      mix(proto, item.prototype || item);
+    }
+  },
+  Statics: function(staticProperties) {
+    // 直接混入静态属性。灵活使用，为已存在的 类 添加属性。
+    mix(this, staticProperties);
+  }
+}
+````
 
+再来看看 `implement` 方法, 它是用来混入属性的。
 
+````js
+function implement(properties) {
+  var key, value;
+  for (key in properties) {
+    value = properties[key];
+    if (Class.Mutators.hasOwnProperty(key)) {
+      Class.Mutators[key].call(this, value);
+    } else {
+      this.prototype[key] = value;
+    }
+  }
+}
+````
+
+好了，最关键的方法 `Class.create` 来了，它是用来创建类的，可以指定父类。
+
+````js
+Class.create = function(parent, properties) {
+  // 如果没有指定父类，父类就是 Class
+  if (!isFunction(parent)) {
+    properties = parent;
+    parent = null;
+  }
+  properties || (properties = {});
+  parent || (parent = properties.Extends || Class);
+  properties.Extends = parent;
+  // 创建子类的构造函数
+  function SubClass() {
+    // 调用父类的构造函数
+    parent.apply(this, arguments);
+    // 仅调用自身的初始化方法，initialize
+    if (this.constructor === SubClass && this.initialize) {
+      this.initialize.apply(this, arguments);
+    }
+  }
+  // 指定父类的情况下，继承父类的属性
+  if (parent !== Class) {
+    Mix(SubClass, parent, parent.StaticsWhiteList);
+  }
+  // 为子类添加实例属性
+  implement.call(SubClass, properties);
+  // 返回可继续 继承 的子类
+  return classify(SubClass);
+}
+````
+
+最后来看看继承的方法 `Class.extend` ，被 classify 的类，都可以继续创建子类。
+
+````js
+Class.extend = function(properties) {
+  properties || (properties = {});
+  properties.Extends = this;
+  return Class.create(properties);
+}
+````
+
+最后的最后，简单介绍它的工具类，Helpers
+
+````js
+// 属性混合，增加白名单限制
+function mix(r, s, wl) {
+  for (var p in s) {
+    if (s.hasOwnProperty(p)) {
+      if (wl && indexOf(wl, p) === -1) continue;
+      if (p !== "prototype") {
+        r[p] = s[p];
+      }
+    }
+  }
+}
+
+// [].indexOf 是 ES5 加入的，并非所有浏览器都支持。
+// 这种写法还是比较谨慎的，没有使用也不需要 polyfill 的方式。
+var indexOf = Array.prototype.indexOf ? function(arr, item) {
+  return arr.indexOf(item);
+} : function(arr, item) {
+  for (var i = 0, len = arr.length; i < len; i++) {
+    if (arr[i] === item) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// 这个很简单，只有 Object.prototype.toString 才能知道它的 [[class]]
+var toString = Object.prototype.toString;
+var isArray = Array.isArray || function(val) {
+  return toString.call(val) === "[object Array]";
+}
+var isFunction = function(val) {
+  return toString.call(val) === "[object Function]";
+}
+````
