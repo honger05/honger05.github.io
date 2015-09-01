@@ -146,7 +146,9 @@ var Dog = Class(Animal).extend({
 })
 ````
 
-Class 的几个变种属性 `Extends` `Implements` `Statics`
+Class 的三个变种属性 `Extends` `Implements` `Statics`
+
+这三个属性会做特殊处理
 
 ````js
 Class.Mutators = {
@@ -173,7 +175,7 @@ Class.Mutators = {
     }
   },
   Statics: function(staticProperties) {
-    // 直接混入静态属性。灵活使用，为已存在的 类 添加属性。
+    // 直接混入静态属性。
     mix(this, staticProperties);
   }
 }
@@ -205,6 +207,7 @@ Class.create = function(parent, properties) {
     parent = null;
   }
   properties || (properties = {});
+  // 如果指定了 Extends 属性， 父类就是它了
   parent || (parent = properties.Extends || Class);
   properties.Extends = parent;
   // 创建子类的构造函数
@@ -220,7 +223,7 @@ Class.create = function(parent, properties) {
   if (parent !== Class) {
     Mix(SubClass, parent, parent.StaticsWhiteList);
   }
-  // 为子类添加实例属性
+  // 为子类添加实例属性，三个特殊属性，在这里被执行
   implement.call(SubClass, properties);
   // 返回可继续 继承 的子类
   return classify(SubClass);
@@ -253,7 +256,7 @@ function mix(r, s, wl) {
 }
 
 // [].indexOf 是 ES5 加入的，并非所有浏览器都支持。
-// 这种写法还是比较谨慎的，没有使用也不需要 polyfill 的方式。
+// 这里没有也不需要使用 polyfill 的方式。
 var indexOf = Array.prototype.indexOf ? function(arr, item) {
   return arr.indexOf(item);
 } : function(arr, item) {
