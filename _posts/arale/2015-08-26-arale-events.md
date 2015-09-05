@@ -57,6 +57,7 @@ Events.prototype.off = function(events, callback, context) {
     delete this.__events;
     return this;
   }
+  // 第一个事件参数不存在时，遍历所有 cache 中的事件。 keys 的用法在最下面
   events = events ? events.split(/\s+/) : keys(cache);
   // 遍历事件集合
   while (event = events.shift()) {
@@ -94,14 +95,103 @@ Events.prototype.trigger = function(events) {
   while (event = events.shift()) {
     if (all = cache.all) all = all.slice();
     if (list = cache[event]) list = list.slice();
+    // 执行事件的绑定
     callEach(list, rest, this, returned);
+    // 执行 all 的绑定
     callEach(all, [ event ].concat(rest), this, returned);
   }
   return returned.status;
 }
+
+function callEach(list, args, context, returned) {
+  var r;
+  if (list) {
+    for(var i = 0, len = list.length; i < len, i++) {
+      // 执行绑定事件
+      r = list[i].apply(list[i+1] || context, args);
+      // trigger 的返回值是一个布尔值，只要有一个 callback 返回 false，trigger 就会返回 false。
+      r === false && returned.status && (returned.status = false);
+    }
+  }
+}
+````
+
+---
+### mixTo `Events.mixTo(receiver)`
+
+````js
+Events.mixTo = function(receiver) {
+  // 接收者若是函数，就放在它的原型上，若是对象，就放在对象的身上。
+  receiver = receiver.prototype || receiver;
+  var proto = Events.prototype;
+  for (var p in proto) {
+    if (proto.hasOwnprototype(p)) {
+      receiver[p] = proto[p];
+    }
+  }
+}
+````
+
+例如
+
+````js
+define(function(require) {
+    var Events = require('events');
+
+    function Dog() {
+    }
+
+    //在 Dog.prototype 上增加 Events 的三个方法。
+    Events.mixTo(Dog);
+
+    Dog.prototype.sleep = function() {
+        this.trigger('sleep');
+    };
+
+    var dog = new Dog();
+    dog.on('sleep', function() {
+        alert('狗狗睡得好香呀');
+    });
+
+    dog.sleep();
+});
+````
+
+Events 的另一种用法是
+
+````js
+define(function(require) {
+    var Events = require('events');
+
+    var object = new Events();
+    object.on('expand', function() {
+        alert('expanded');
+    });
+
+    object.trigger('expand');
+});
 ````
 
 
+---
+### Object.keys
+
+最后介绍下 ES5 的 `Object.keys` , 遍历对象中所有的 key 值
+
+````js
+var keys = Object.keys;
+if (!keys) {
+  keys = function(o) {
+    var result = [];
+    for (var name in o) {
+      if (o.hasOwnprototype(name)) {
+        result.push(name);
+      }
+    }
+    return result;
+  }
+}
+````
 
 
 
