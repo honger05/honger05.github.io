@@ -10,7 +10,9 @@ shortContent: ""
 #arale 之 class 篇
 ---
 
-> arale 是阿里、开源社区明星人物--玉伯，开发的一套组件，代码相当优美，大赞玉伯的开源精神。
+> arale 是阿里、开源社区明星人物--玉伯，开发的一套组件，代码相当优美，大赞玉伯的开源精神，我是您的粉丝。
+
+这里分享下我对这段源代码的感悟，若有错误的地方，烦请指正。=￣ω￣=
 
 ### 先谈谈基于原型的继承。
 
@@ -36,7 +38,7 @@ F ----> Function.prototype ----> Object.prototype ----> null
 // Object.prototype.__proto__ === null
 ````
 
-而 f 只能调用 a ， f 的原型链是这样的。（f 是 F 的实例，一切皆对象，f 继承自 Object）
+而 f 只能调用 a ， f 的原型链是这样的。（直观解释：f 是 F 的实例，一切皆对象，f 继承自 Object）
 
 ````js
 f ----> F.prototype ----> Object.prototype ----> null
@@ -249,6 +251,7 @@ Class.extend = function(properties) {
 // 属性混合，增加白名单限制
 function mix(r, s, wl) {
   for (var p in s) {
+    // 最佳实践：任何 for in 循环都要带上 hasOwnProperty。除非你想遍历原型
     if (s.hasOwnProperty(p)) {
       if (wl && indexOf(wl, p) === -1) continue;
       if (p !== "prototype") {

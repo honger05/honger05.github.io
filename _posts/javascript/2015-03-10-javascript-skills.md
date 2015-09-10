@@ -11,7 +11,59 @@ shortContent: ""
 # JavaScript 常用技巧
 ----
 
-* 双感叹号 !!
+### !! 双感叹号
+
+作用同 Boolean(value), 总是返回一个 布尔值。
+
+````js
+// obj 如果是 null 的话，flag 则为 null
+var flag = obj && obj.a === 1;
+````
+
+因为 逻辑运算符 && 和 || 并不总是返回 true of false。如果有一个操作数是 对象 的话，有可能返回的是 null
+
+所以要满足 flag 总是一个布尔值要这样做
+
+````js
+var flag = !!(obj && obj.a === 1);
+````
+
+<!--break-->
+
+----
+### ~ 取反操作符
+
+简单的理解，对任一数值 x 进行按位非操作的结果为 -(x + 1)
+
+判断数值中是否有某元素时，以前这样判断：
+
+````js
+if(arr.indexOf(ele) > -1){...} //易读
+````
+
+现在可以这样判断，两者效率：
+
+````js
+if(~arr.indexOf(ele)){...} //简洁
+````
+
+那么，双取反 `~~` 就代表  -(-(x+1) + 1)
+
+对于浮点数，~~value可以代替parseInt(value)，而且前者效率更高些
+
+````js
+parseInt(-1.1) //-1
+~~(-1.1) //-1
+parseInt(true) // NaN
++true // 1
+~~true // 1
+Number(true) // 1
+````
+
+> 总结: !! 相当于 Boolean(v), ~~ 相当于 （浮点数）parseInt() / (非浮点数) Number(), + 相当于 Number().
+
+----
+### 运算符与函数写在一起，组成函数表达式，而非函数声明。
 
 ````javascript
 
@@ -37,7 +89,8 @@ var test = !!o.flag // false   等同于 var test = o.flag || false
 (function() {alert1} ()) // undefined
 ````
 
-<!--break-->
+---
+### 其他
 
 * 银行卡 4 位 空格
 
