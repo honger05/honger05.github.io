@@ -10,11 +10,9 @@ tags: [js, arale]
 # 读 arale 源码之 events 篇
 ---
 
-这是 读 arale 源码 系列的第二篇， events 篇。
+> 系列文章：[读 arale 源码之 class 篇](http://www.honger05.com/arale/2015-08-31-arale-class/)
 
-[读 arale 源码之 class 篇](http://www.honger05.com/arale/2015-08-31-arale-class/)
-
-> Events 提供了基本的事件添加、移除和触发功能。
+这是 读 arale 源码 系列的第二篇， events 篇。 Events 提供了基本的事件添加、移除和触发功能。
 
 仅提供非常纯粹的事件驱动机制。同类产品以下两种
 
