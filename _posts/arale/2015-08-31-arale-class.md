@@ -1,13 +1,14 @@
 ---
 layout: post
-title: arale 之 class 篇
+title: 读arale 源码之 class 篇
 date: 2015-08-31
 categories: arale
 tags: [js, arale]
 shortContent: ""
 ---
 {% include JB/setup %}
-#arale 之 class 篇
+
+# 读 arale 源码之 class 篇
 ---
 
 > arale 是阿里、开源社区明星人物--玉伯，开发的一套组件，代码相当优美，大赞玉伯的开源精神，我是您的粉丝。

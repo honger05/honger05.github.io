@@ -1,16 +1,18 @@
 ---
 layout: post
-title: arale 之 events 篇
+title: 读 arale 源码之 events 篇
 date: 2015-08-26
 categories: arale
 tags: [js, arale]
 ---
 {% include JB/setup %}
 
-# arale 之 events 篇
+# 读 arale 源码之 events 篇
 ---
 
 这是 读 arale 源码 系列的第二篇， events 篇。
+
+[读 arale 源码之 class 篇](http://www.honger05.com/arale/2015-08-31-arale-class/)
 
 > Events 提供了基本的事件添加、移除和触发功能。
 
