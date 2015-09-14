@@ -10,9 +10,9 @@ tags: [js, arale]
 # arale 之 attribute 篇
 ---
 
-> 提供基本的属性添加、获取、移除等功能。
+> 系列文章：[读 arale 源码之 class 篇](http://www.honger05.com/arale/2015-08-31-arale-class/)
 
-`attributes` 是与实例相关的状态信息，可读可写，发生变化时，会自动触发相关事件
+`attributes` 提供基本的属性添加、获取、移除等功能。它是与实例相关的状态信息，可读可写，发生变化时，会自动触发相关事件
 
 ---
 ### initAttrs 初始化属性
