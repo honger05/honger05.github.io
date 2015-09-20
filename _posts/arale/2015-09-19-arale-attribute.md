@@ -1,7 +1,7 @@
 ---
 layout: post
 title: arale 之 attribute 篇
-date: 2014-07-06
+date: 2015-09-19
 categories: arale
 tags: [js, arale]
 ---
