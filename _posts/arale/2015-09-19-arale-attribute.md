@@ -14,8 +14,6 @@ tags: [js, arale]
 
 `attributes` 提供基本的属性添加、获取、移除等功能。它是与实例相关的状态信息，可读可写，发生变化时，会自动触发相关事件
 
----
-
 先来了解一下 Attibute 模块要实现的功能：
 
 1. 设置属性值
@@ -292,6 +290,7 @@ function getEventName(name) {
 
 ````
 
+---
 ### `get` 获取属性的值
 
 配置 getter 的话，调用 getter。
@@ -304,6 +303,7 @@ exports.get = function(key) {
 }
 ````
 
+---
 ### `set` 设置属性的值
 
 并且触发 change 绑定事件，除非 silent 为 true
@@ -363,6 +363,7 @@ exports.set = function(key, val, options) {
 
 ````
 
+---
 ### `change`
 
 手动触发所有 change:attribute 事件
