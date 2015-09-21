@@ -32,7 +32,6 @@ dialog.show(1, 2)
 
 <!--break-->
 
----
 ### after `object.after(methodName, callback, [context])`
 
 在 object[methodName] 方法执行后，再执行 callback 函数.
