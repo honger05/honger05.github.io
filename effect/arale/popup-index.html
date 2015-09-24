@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <style>
-	    .fn-hide, .ui-popup {
+      .fn-hide, .ui-popup {
           display: none;
       }
       .ui-popup {
@@ -81,6 +81,138 @@
           <li><a href="#">内容3</a></li>
           <li><a href="#">内容4</a></li>
       </ul>
+    </div>
+
+    <div class="cell">
+      <h2>多triggers共享一个实例</h2>
+      <div class="popup">
+          <a href="javascript:;" class="trigger-all">下拉框1<span class="icon">▼</span></a>
+          <a href="javascript:;" class="trigger-all">下拉框2<span class="icon">▼</span></a>
+          <a href="javascript:;" class="trigger-all">下拉框3<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup10">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="popup" id="delegateNode">
+          <button id="addNewNode">增加一个节点</button>
+          <a href="javascript:;" class="triggerClass2">下拉框<span class="icon">▼</span></a>
+          <a href="javascript:;" class="triggerClass2">下拉框<span class="icon">▼</span></a>  
+          <ul class="fn-hide ui-popup" id="popup11">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>click 与 _blurHide 共存</h2>
+      <div class="popup">
+          <a href="javascript:;" class="triggerClass3">下拉框1<span class="icon">▼</span></a>
+          <a href="javascript:;" class="triggerClass3">下拉框2<span class="icon">▼</span></a>
+          <a href="javascript:;" class="triggerClass3">下拉框3<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup12">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>focus 情况</h2>
+      <div class="popup">
+          <a class="triggerClass4" href="javascript:;">下拉框1<span class="icon">▼</span></a>
+          <a class="triggerClass4" href="javascript:;">下拉框2<span class="icon">▼</span></a>
+          <a class="triggerClass4" href="javascript:;">下拉框3<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup13">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>渐隐效果 effect: 'fade'</h2>
+      <div class="popup">
+          <a href="#popup14" id="triggerId14">下拉框<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup14">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>延展效果 effect: 'slide'</h2>
+      <div class="popup">
+          <a href="#popup15" id="triggerId15">下拉框<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup15">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>渐隐 + 延展 effect: 'fade slide'</h2>
+      <div class="popup">
+          <a href="#popup16" id="triggerId16">下拉框<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup16">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>自定义动画效果</h2>
+      <div class="popup">
+          <a href="#popup17" id="triggerId17">下拉框<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup17">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>多个元素快速切换（多个实例，同一个element的情况）</h2>
+      <div class="popup">
+          <a href="#popup18" id="triggerId18-1">下拉框1<span class="icon">▼</span></a>
+          <a href="#popup18" id="triggerId18-2">下拉框2<span class="icon">▼</span></a>
+          <ul class="fn-hide ui-popup" id="popup18">
+              <li><a href="#">内容1</a></li>
+              <li><a href="#">内容2</a></li>
+              <li><a href="#">内容3</a></li>
+              <li><a href="#">内容4</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="cell">
+      <h2>动画 & template 配合</h2>
+      <div class="popup">
+          <a href="javascript:;" id="triggerId19">下拉框<span class="icon">▼</span></a>
+      </div>
     </div>
 
     <script src="popup-bundle.js"></script>
