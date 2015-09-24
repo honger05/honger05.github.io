@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <style>
+	    .fn-hide, .ui-popup {
+          display: none;
+      }
+      .ui-popup {
+          border: 1px solid #CCC;
+          padding: 3px 5px;
+          background: #EEE;
+          margin: 0;
+      }
+      .ui-popup li {
+          list-style: none;
+      }
+      .cell {
+        margin: 100px 200px;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="cell">
+      <h2>自定义行为(click)</h2>
+      <a href="javascript:;" id="triggerId3">下拉框<span class="icon">▼</span></a>
+      <ul class="fn-hide ui-popup" id="popup3">
+          <li><a href="#">内容1</a></li>
+          <li><a href="#">内容2</a></li>
+          <li><a href="#">内容3</a></li>
+          <li><a href="#">内容4</a></li>
+      </ul>
+    </div>
+
+    <div class="cell">
+      <h2>自定义Template、Align并设置回调函数</h2>
+      <a href="javascript:;" id="triggerId4">下拉框<span class="icon">▼</span></a>
+    </div>
+
+    <div class="cell">
+      <h2>简单的自动完成组件</h2>
+      <input id="triggerId5" placeholder="请输入...">
+      <ul class="fn-hide ui-popup" id="popup5">
+          <li><a href="#">内容1</a></li>
+          <li><a href="#">内容2</a></li>
+          <li><a href="#">内容3</a></li>
+          <li><a href="#">内容4</a></li>
+      </ul>
+    </div>
+
+    <div class="cell">
+      <h2>相对别的元素定位</h2>
+      <a href="javascript:;" id="triggerId7">下拉框<span class="icon">▼</span></a>
+      <ul class="fn-hide ui-popup" id="popup7">
+          <li><a href="#">内容1</a></li>
+          <li><a href="#">内容2</a></li>
+          <li><a href="#">内容3</a></li>
+          <li><a href="#">内容4</a></li>
+      </ul>
+      <p id="other-element">别的元素</p>
+    </div>
+
+    <div class="cell">
+      <h2>实现 tooltip 效果（无法移动到浮层上）</h2>
+      <a href="javascript:;" id="triggerId8">下拉框<span class="icon">▼</span></a>
+      <ul class="fn-hide ui-popup" id="popup8">
+          <li><a href="#">内容1</a></li>
+          <li><a href="#">内容2</a></li>
+          <li><a href="#">内容3</a></li>
+          <li><a href="#">内容4</a></li>
+      </ul>
+    </div>
+
+    <div class="cell">
+      <h2>异步的情况</h2>
+      <a href="javascript:;" id="triggerId9">点击后1秒出现<span class="icon">▼</span></a>
+      <ul class="fn-hide ui-popup" id="popup9">
+          <li><a href="#">内容1</a></li>
+          <li><a href="#">内容2</a></li>
+          <li><a href="#">内容3</a></li>
+          <li><a href="#">内容4</a></li>
+      </ul>
+    </div>
+
+    <script src="popup-bundle.js"></script>
+  </body>
+</html>
