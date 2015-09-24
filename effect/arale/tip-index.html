@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <style>
+	    .fn-hide, .ui-popup {
+          display: none;
+      }
+      .cell {
+        margin: 100px 200px;
+      }
+      .cell p {
+          display: inline-block;
+          padding:10px;
+          margin-right: 5px;
+          background-color:#FFCB88;
+          border-radius: 4px;
+          cursor: pointer;
+          overflow:hidden;
+      }
+      .cell p:hover {
+          background-color:#FFB556;
+      }
+    </style>
+  </head>
+  <body>
+      
+    <div class="cell">
+        <p id="test1">10点钟位置</p>
+    </div>
+
+    <div class="cell">
+        <p id="test2">11点钟位置, slide 效果</p>
+    </div>
+
+    <div class="cell">
+        <p id="test3">7点钟位置，更改内容，fade 效果</p>
+    </div>
+
+    <div class="cell">
+      <p id="test4">本来是7点钟的Tip，屏幕空间不够时会变成11点的Tip</p>
+    </div>
+
+    <div class="cell">
+        <p class="test5">动态获取</p>
+        <p class="test5">trigger 的属性</p>
+    </div>
+
+    <script src="tip-bundle.js"></script>
+  </body>
+</html>
