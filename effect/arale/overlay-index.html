@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <style>
+	    .parent{
+          position:relative;
+          float:right;
+      }
+      .example {
+          color: #fff;
+          background-color: #89c237;
+          display:inline-block;
+      }
+      .cell {
+        margin: 100px 200px;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="cell">
+      <h2>基本浮层 目标元素1 模板生成</h2>
+      <div id="c"></div>
+      <div id="a" class="example">基准元素1</div>
+    </div>
+
+    <div class="cell">
+      <h2>全局定位浮层 目标元素2</h2>
+      <div id="b" class="example">目标元素2</div>
+    </div>
+
+    <div class="cell">
+      <h2>点击文档其他地方隐藏自身</h2>
+      <div id="d1_trigger" style="width:150px;height:30px;background:#ccc;">点击我显隐元素3</div>
+      <div id="d1" class="example">目标元素3，点击页面空白处我会消失</div>
+
+      <div id="d2_trigger" style="width:150px;height:30px;background:#e80;color:#fff;">点击我显隐元素4</div>
+      <div id="d2" class="example">目标元素4，点击页面空白处我会消失</div>
+    </div>
+
+    <div class="cell">
+      <h2>单例组件，修改后全部 Mask 都生效。</h2>
+      <button id="a_btn">点击显示默认遮罩层, 按 ESC 或 点击遮罩层 退出</button>
+      <button id="b_btn">点击显示修改的遮罩层</button>
+    </div>
+
+    <script src="overlay-bundle.js"></script>
+  </body>
+</html>
