@@ -24,7 +24,7 @@ tags: [js, backbone, marionette]
 Template/DOM (View) ----------> Backbone.View (Presenter) ----------> Backbone.Model (Model)
         |                           |         |                                 |
         |            updates        |         |             events              |
-         <---------------------------         <---------------------------------|
+        |<--------------------------|         |<--------------------------------|
 
 ````
 
@@ -58,8 +58,18 @@ Template/DOM (View) ----------> Backbone.View (Presenter) ----------> Backbone.M
 2. `复杂交互`：使用流同步（Flow Synchronization），主动控制显示 [SUPERVISING PRESENTERS](http://victorsavkin.com/post/49767352960/supervising-presenters)
 
 
+使用 Marionette 工作流程是这样的：
 
+````js
+                         events for
+                     complex interactions                                 commands
+Template/DOM (View) ----------------------> Marionette.View (Presenter) ------------> Backbone.Model (Model)
+        |                                           |        |                                |
+        |               complex updates             |        |             events             |
+        |<------------------------------------------|        |<-------------------------------|
+````
 
+可以看到 Marionette 并没有改变它的结构。它只负责管理复杂的 UI 交互。
 
 
 
