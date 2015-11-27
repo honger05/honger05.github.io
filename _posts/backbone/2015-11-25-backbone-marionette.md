@@ -21,10 +21,10 @@ tags: [js, backbone, marionette]
 
 ````js
                       events                               commands
-Template/DOM (View) ----------> Backbone.View (Presenter) ----------> Backbone.Model (Model)  ---
-  |                                  |         |                                                |
-  |             updates              |         |                   events                       |
-   <----------------------------------         <------------------------------------------------|
+Template/DOM (View) ----------> Backbone.View (Presenter) ----------> Backbone.Model (Model)
+        |                           |         |                                 |
+        |            updates        |         |             events              |
+         <---------------------------         <---------------------------------|
 
 ````
 
@@ -34,6 +34,8 @@ Template/DOM (View) ----------> Backbone.View (Presenter) ----------> Backbone.M
 1. `业务逻辑`: model 和 collection 处理大部分逻辑。他们对应着服务端后台的资源，也对应着视图显示的类容。
 
 2. `构建 DOM`：一般是 handlebars。
+
+<!--break-->
 
 3. `视图逻辑`：Backbone.View ，其中的逻辑要自己维护。
 
@@ -45,7 +47,9 @@ Template/DOM (View) ----------> Backbone.View (Presenter) ----------> Backbone.M
 
 7. `创建与连接组件`: 手动实现。
 
-<!--break-->
+<hr>
+
+## 管理复杂的 UI 交互
 
 那么，这篇文章着重于讲 UI 交互，所有的 UI 交互都可以被划分为
 
