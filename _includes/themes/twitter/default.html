@@ -43,7 +43,9 @@
     <div class="navbar">
       <div class="navbar-inner">
        <div class="nav-narrow">
-          <a class="brand" href="{{ HOME_PATH }}"><span class="fa fa-linux (alias)">&nbsp;{{ site.title }}</span></a>
+          <a class="brand" href="{{ HOME_PATH }}">
+            <span class="fa fa-code">&nbsp;&nbsp;{{ site.title }}</span>
+          </a>
           <ul class="nav">
             {% assign pages_list = site.pages %}
             {% assign group = 'navigation' %}

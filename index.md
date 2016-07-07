@@ -27,8 +27,10 @@ description: 运动达人，篮球高手，游泳健将。看过许多技术类�
 {% assign len = site.posts | size %}
 {% if len > 10 %}
   {% assign archive = site.pages | where:"title","Archive" %}
-  <a class="waves-effect waves-light btn right orange darken-4" href="{{ archive[0].url }}"><i class="mdi-image-style right"></i><span lang="MORE_INFO"></span></a>
+  <a class="waves-effect waves-light right orange darken-4" href="/archive"
+		style="display:block;margin-top:20px;">
+		<i class="mdi-image-style right"></i><span lang="MORE_INFO">所有文章</span>
+	</a>
   {% assign archive = nil %}
 {% endif %}
 {% assign len = nil %}
-

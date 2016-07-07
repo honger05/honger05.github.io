@@ -3567,7 +3567,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .navbar.scrollChange {
     padding: 0;
     position: fixed;
-    background: #1da950;
+    background: #00a9a9;
     color: #fff;
     transition: background 2s;
 }
@@ -4837,7 +4837,7 @@ button.close {
     height: 50px;
     color: #fff;
     text-align: center;
-    background: #1da950;
+    background: #00a9a9;
     margin-left: -56px;
     margin-top: -10px;
 }
@@ -4845,7 +4845,7 @@ button.close {
 .date_label::before {
     position: absolute;
     content: "";
-    border: 1.5em solid #1da950;
+    border: 1.5em solid #00a9a9;
 }
 
 .day_month {
@@ -4878,7 +4878,7 @@ button.close {
     .date_label::after {
         top: 0;
         right: 100%;
-        border-right: 0.3em solid #1da950;
+        border-right: 0.3em solid #0c7b7b;
         border-top: 0.4em solid transparent;
     }
 
@@ -6117,7 +6117,7 @@ button.close {
         width: 150px;
         height: 48px;
         text-align: left;
-        background-color: #1da950;
+        background-color: #00a9a9;
         margin-right: 100px;
     }
 
@@ -6132,7 +6132,7 @@ button.close {
         content: "";
         top: 100%;
         left: 0;
-        border-right: 1em solid #1da950;
+        border-right: 1em solid #0c7b7b;
         border-bottom: 0.5em solid transparent;
     }
 
@@ -6153,5 +6153,3 @@ button.close {
         overflow: visible !important;
     }
 }
-
-
