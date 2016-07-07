@@ -4,6 +4,9 @@ body {
 h1 {
     font-family: Arial, "楷体";
 }
+figure {
+    margin: 0;
+}
 .fa.fa-arrow-circle-right {
     margin-right: 15px;
 }
