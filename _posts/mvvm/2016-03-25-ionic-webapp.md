@@ -3,7 +3,7 @@ layout: post
 title: ionic webapp + webpack 实践
 date: 2016-03-25
 categories: ionic
-tags: [ionic, webapp, webpack]
+tags: [ionic, webapp, webpack, angular]
 ---
 {% include JB/setup %}
 
@@ -12,7 +12,7 @@ tags: [ionic, webapp, webpack]
 
 #### 一、环境搭建
 
-使用 webpack 来构建的好处要专门写一篇了，常用的就不说了，说下其它方面的心得。
+使用 webpack 来构建项目，一方面可以使用任意你想用的技术栈提升你的开发体验，另一方面可以解决产品上线之后性能和用户体验方面的问题。这里记录下对 webpack 其它方面的心得。
 
 &emsp;
 
@@ -145,11 +145,15 @@ angular.module('antsins.controllers')
     Gender, ionicDatePicker, $ionicHistory){
 ````
 
-出来 api 有点烦之外，其它地方还是非常不错的，ionic 大大提高了开发效率。
+除了 api 有点烦之外，其它地方还是非常不错的，ionic 大大提高了开发效率。
 
 &emsp;
 
-#### 三、最后的效果
+#### 三、效果
+
+&emsp;
+
+&emsp;开发过程也是曲折，由于缺少产品经理，需求变动太大。/(ㄒoㄒ)/~~ ，也是意识到了 产品经理 的重要性。
 
 <div class="row">
   <div class="span6" align="center" style="margin-top:5px;">
@@ -160,6 +164,8 @@ angular.module('antsins.controllers')
   </div>
 </div>
 
+&emsp;
 
+&emsp;经过多次需求更新之后的[成品](http://ins.xyisi.com/)
 
 
