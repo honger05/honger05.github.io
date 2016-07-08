@@ -1,13 +1,13 @@
 ---
 layout: post
-title: A Tutorial of Backbone.Marionette
+title: A Tutorial of Backbone Marionette
 date: 2015-11-25
 categories: backbone
 tags: [js, backbone, marionette]
 ---
 {% include JB/setup %}
 
-# 使用 Backbone.Marionette 管理复杂 UI 交互
+# 使用 Backbone Marionette 管理复杂 UI 交互
 ---
 
 > 只扯蛋，不给代码，就是耍流氓 -- honger。
