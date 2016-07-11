@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 微信SDK + vue + webpack 实践
+title: 微信sdk + vue + webpack 实践
 date: 2016-06-09
 categories: ionic
 tags: [ionic, webapp, webpack, angular]
 ---
 {% include JB/setup %}
 
-# 微信SDK + vue + webpack 实践
+# 微信sdk + vue + webpack 实践
 ---
 
 > 我是一个特别注重开发体验的人，我坚信注重开发体验，才会把用户体验做好。
@@ -19,6 +19,8 @@ Vue 足够灵活，Webpack 也是如此。因此我尝试了很多种方法，�
 #### 一、Vue 组件化开发提升开发体验
 
 &emsp;
+
+1.vue 组件开发
 
 &emsp;&emsp;组件可以扩展 HTML 元素，封装可重用代码，你可以把它当成正常的 HTML 元素使用，而这个元素是你自己定义的。它的表现（css）和行为（js）全都被封装了，调用的方式像是在写正常的 HTML 一样。
 
@@ -40,6 +42,80 @@ Vue.component('Clock', Clock)
 ````
 
 <!--break-->
+
+&emsp;
+
+2.vue 组件动画
+
+&emsp;&emsp;动画原理是组件在显示隐藏或删除添加的过程中改变css的类名，默认是 v-enter, v-leave . 这里的 v 可以改成任意你想要的名字，例如下面改成了 fade.
+
+````js
+// html
+<div v-if="show" v-transition="fade">hello</div>
+
+// css
+.fade-transition {
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+/* .fade-enter 定义进入的开始状态 */
+/* .fade-leave 定义离开的结束状态 */
+.fade-enter, .fade-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+````
+
+有两种方式结合 animate.css 框架
+
+a. 在vue中注册类名
+
+````js
+// js
+Vue.transition('bounce', {
+  enterClass: 'bounceInLeft',
+  leaveClass: 'bounceOutRight'
+})
+
+// html
+<div class="animated" transition="bounce" v-show="show">
+````
+
+b. 用 sass 版的 animate.css 的 @mixin 来 @include 
+
+````css
+@import "~animate/animate.scss";
+
+/**
+ * views transition based on animate.css
+ */
+.views-transition {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.views-enter {
+  @include fadeInDown(
+    $duration: 1s,
+    $delay: 0
+  );
+}
+
+.views-leave {
+  @include fadeOutUp(
+    $duration: 1s,
+    $delay: 0
+  );
+}
+````
+
 
 &emsp;
 
@@ -143,7 +219,7 @@ if (!localStorage.allowRecord) {
   <div class="span4" align="center" 
 
   style="margin-top:15px;padding:10px 0;border-radius:8px;border:1px solid #ccc;">
-    <img width="90%" src="/assets/images/1.pic.jpg">
+    <img width="90%" src="/assets/images/IMG_9909.jpg">
   </div>
   <div class="span4" align="center" 
 

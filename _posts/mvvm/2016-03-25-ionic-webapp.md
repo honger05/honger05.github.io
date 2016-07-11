@@ -1,13 +1,13 @@
 ---
 layout: post
-title: ionic webapp + webpack 实践
+title: ionic angular + webpack 实践
 date: 2016-03-25
 categories: ionic
 tags: [ionic, webapp, webpack, angular]
 ---
 {% include JB/setup %}
 
-# ionic webapp + webpack 实践
+# ionic angular + webpack 实践
 ---
 
 #### 一、环境搭建
@@ -146,6 +146,50 @@ angular.module('antsins.controllers')
 ````
 
 除了 api 有点烦之外，其它地方还是非常不错的，ionic 大大提高了开发效率。
+
+&emsp;
+
+*2. 原生滚动*
+
+ionic 默认是 JavaScript 的滚动，在中低端 Android 中是有一些卡顿的。也提供了原生滚动的选择，可以在单个 view 中开启，在 ion-content 标签中加入属性
+
+````js
+overflow-scroll="true"
+````
+
+对所有 view 开启它，在 js 中执行
+
+````js
+$ionicConfigProvider.scrolling.jsScrolling(false)
+````
+
+&emsp;
+
+*2. 在单个页面自定义返回事件*
+
+````js
+var old_back = $rootScope.$ionicGoBack
+
+$scope.$on('$ionicView.beforeEnter', function() {
+  $rootScope.$ionicGoBack = function() {
+    $ionicPopup.confirm({
+      title: '确定返回？',
+      template: '返回将丢失您所输入的数据！',
+      okText: '确定',
+      okType: 'button-assertive',
+      cancelText: '取消'
+    }).then(function(res) {
+      if(res) {
+        $ionicHistory.goBack()
+      }
+    })
+  }
+})
+
+$scope.$on('$ionicView.beforeLeave', function() {
+  $rootScope.$ionicGoBack = old_back
+})
+````
 
 &emsp;
 
